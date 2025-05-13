@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/pages/register.dart';
+import 'package:untitled/pages/Home.dart';
 
 class Login extends StatelessWidget {
   Login({super.key});
@@ -29,7 +30,6 @@ class Login extends StatelessWidget {
                       ],
                     ),
                   ),
-
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -131,27 +131,45 @@ class Login extends StatelessWidget {
                                     );
                                   },
                                   child: Text(
-                                      "Caso nao tenha conta, cadastre-se aqui.",
+                                      "Caso não tenha conta, cadastre-se aqui.",
                                       style: TextStyle(color: Colors.grey)),
                                 ),
                                 SizedBox(height: 50),
                                 InkWell(
                                   borderRadius: BorderRadius.circular(50),
                                   onTap: () {
-                                    if (email == "" && passw == "") {
-                                      print('FOI');
-                                    } else {
-                                      print('se mata');
+                                    if (email.isNotEmpty && passw.isNotEmpty) {
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => Home()),
+                                      );
+                                    } else if (email.isEmpty && passw.isEmpty) {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: Text('Atenção'),
+                                            content: Text('Por favor, preencha os campos de email e senha antes de continuar.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: Text('OK'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
                                     }
+                                    // Caso apenas um dos campos esteja vazio, não faz nada
                                   },
                                   child: Container(
                                     height: 50,
-                                    margin:
-                                    EdgeInsets.symmetric(horizontal: 70),
+                                    margin: EdgeInsets.symmetric(horizontal: 70),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
-                                      color:
-                                      Color.fromRGBO(102, 225, 170, 0.9),
+                                      color: Color.fromRGBO(102, 225, 170, 0.9),
                                     ),
                                     child: Center(
                                       child: Text(
@@ -173,8 +191,7 @@ class Login extends StatelessWidget {
                                         height: 50,
                                         decoration: BoxDecoration(
                                           border: Border.all(width: .59),
-                                          borderRadius:
-                                          BorderRadius.circular(50),
+                                          borderRadius: BorderRadius.circular(50),
                                           color: Colors.white,
                                         ),
                                         child: Center(
@@ -191,8 +208,7 @@ class Login extends StatelessWidget {
                                       child: Container(
                                         height: 50,
                                         decoration: BoxDecoration(
-                                          borderRadius:
-                                          BorderRadius.circular(50),
+                                          borderRadius: BorderRadius.circular(50),
                                           color: Colors.blue,
                                         ),
                                         child: Center(

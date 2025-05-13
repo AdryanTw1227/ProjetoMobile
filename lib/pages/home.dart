@@ -124,7 +124,6 @@ class Home extends StatelessWidget{
                             ),
                           ],
                         ),
-
                       ),
                     ],
                   ),

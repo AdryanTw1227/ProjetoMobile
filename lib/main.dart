@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/pages/home.dart';
+//import 'package:untitled/pages/home.dart';
+//import 'package:untitled/pages/login.dart';
+import 'package:untitled/pages/register.dart';
 
 
 void main() {
@@ -14,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner:
         false,
-        home: Home()
+        home: Register()
     );
   }
 }
